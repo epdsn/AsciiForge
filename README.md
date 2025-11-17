@@ -20,7 +20,6 @@ The program will present you with the following options:
 1. **Convert an image to ASCII art** - Transform your images into text-based art
 2. **View predefined ASCII art pieces** - Browse and display built-in ASCII art from the collection
 3. **Create your own ASCII art** - Design custom ASCII art from scratch
-4. **Exit** - Close the application
 
 ### Additional Tools
 
@@ -47,3 +46,28 @@ python ascii_art_tester.py -t "Your ASCII art here"
 - Adjustable output width
 - Save ASCII art to file
 - Built-in sample art for quick testing
+
+## Future Roadmap
+
+AsciiForge is actively being developed with exciting new features planned:
+
+### FastAPI Web Service
+- RESTful API endpoints for image-to-ASCII conversion
+- Web-based interface for creating and viewing ASCII art
+- API documentation and interactive testing with Swagger UI
+- Cloud deployment for easy access from anywhere
+
+### Web Application
+- Modern responsive web interface
+- Real-time ASCII art preview and editing
+- Share and export ASCII art creations
+- Cloud storage for saved artworks
+- Cross-platform accessibility from any browser
+
+### Mobile Application
+- Native iOS and Android apps
+- Touch-optimized ASCII art editor
+- Camera integration for instant image-to-ASCII conversion
+- Offline mode for creating art on the go
+- Social sharing features
+
