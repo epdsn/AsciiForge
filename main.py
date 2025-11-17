@@ -1,3 +1,8 @@
+import PIL.Image
+import subprocess
+import sys
+import canvas
+
 print("Welcom to AsciiForge!")
 print("You can create ASCII art from images, use predefined ASCII art pieces, or create your own from scratch.")
 print("What would you like to do tody?")
@@ -14,10 +19,8 @@ while choice not in [1, 2, 3, 4]:
         print("Invalid input. Please enter a number between 1 and 4.")
 if choice == 1:
     #import image-to-ascii # import not working in this environment
-    #image-to-ascii.main()
-    print("Feature coming soon!")
+    subprocess.run([sys.executable, 'image-to-ascii.py'])
 elif choice == 2:
-    import canvas
     art_names = canvas.list_art()
     print("Available ASCII art pieces:")
     for name in art_names:

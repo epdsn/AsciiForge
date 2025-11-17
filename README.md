@@ -21,6 +21,45 @@ The program will present you with the following options:
 2. **View predefined ASCII art pieces** - Browse and display built-in ASCII art from the collection
 3. **Create your own ASCII art** - Design custom ASCII art from scratch
 
+### Using in Visual Studio Code
+
+#### Running the Application
+
+1. **Open the integrated terminal** in VS Code:
+   - Press `` Ctrl+` `` (backtick) or go to `Terminal > New Terminal`
+
+2. **Run the main application**:
+   ```bash
+   python main.py
+   ```
+
+3. **Alternative: Run directly from the editor**:
+   - Open [main.py](main.py) in the editor
+   - Press `F5` or click `Run > Start Debugging`
+   - Or right-click in the editor and select `Run Python File in Terminal`
+
+#### Using the ASCII Art Tester
+
+You can run the tester tools directly from the VS Code terminal:
+
+```bash
+# List all available ASCII art
+python ascii_art_tester.py -l
+
+# Display specific art from canvas
+python ascii_art_tester.py -c cat
+
+# Convert an image
+python ascii_art_tester.py -f path/to/image.jpg
+```
+
+#### Tips for VS Code
+
+- Use the **Output pane** to view results when running with F5
+- The **integrated terminal** is best for interactive prompts
+- Install the **Python extension** for enhanced debugging and IntelliSense
+- Use **Ctrl+Shift+P** and type "Python: Select Interpreter" to ensure the correct Python environment
+
 ### Additional Tools
 
 #### Show sample ASCII art
