@@ -1,6 +1,7 @@
 import PIL.Image
 import subprocess
 import sys
+import example
 import canvas
 
 print("Welcom to AsciiForge!")
@@ -21,18 +22,18 @@ if choice == 1:
     #import image-to-ascii # import not working in this environment
     subprocess.run([sys.executable, 'image-to-ascii.py'])
 elif choice == 2:
-    art_names = canvas.list_art()
+    art_names = example.list_art()
     print("Available ASCII art pieces:")
     for name in art_names:
         print(f"- {name}")
     selected_name = input("Enter the name of the ASCII art you want to view: ")
-    art = canvas.get_art(selected_name)
+    art = example.get_art(selected_name)
     if art:
         print(art)
     else:
         print("ASCII art not found.")
 elif choice == 3:
-    print("Feature coming soon!")
+    canvas.interactive_canvas()
 elif choice == 4:
     print("Exiting AsciiForge. Goodbye!")
 

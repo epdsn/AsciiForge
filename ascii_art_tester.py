@@ -6,7 +6,7 @@ ASCII Art Tester - A simple tool for testing and displaying ASCII art
 import sys
 from PIL import Image
 import argparse
-import canvas
+import example
 
 
 ASCII_CHARS = ['@', '#', 'S', '%', '?', '*', '+', ';', ':', ',', '.']
@@ -78,13 +78,13 @@ def main():
     
     if args.list:
         print("\nAvailable ASCII art in canvas:")
-        for name in canvas.list_art():
+        for name in example.list_art():
             print(f"  - {name}")
-        print(f"\nTotal: {len(canvas.list_art())} pieces")
+        print(f"\nTotal: {len(example.list_art())} pieces")
         print("\nUse: python ascii_art_tester.py -c <name>")
     
     elif args.all:
-        all_art = canvas.get_all_art()
+        all_art = example.get_all_art()
         for name, art in all_art.items():
             print(f"\n{'='*80}")
             print(f"  {name.upper()}")
@@ -92,13 +92,13 @@ def main():
             print(art)
     
     elif args.canvas:
-        art = canvas.get_art(args.canvas)
+        art = example.get_art(args.canvas)
         if art:
             print(f"\nASCII Art - '{args.canvas}':")
             display_ascii_art(art)
         else:
             print(f"Error: '{args.canvas}' not found in canvas.")
-            print("Available art:", ", ".join(canvas.list_art()))
+            print("Available art:", ", ".join(example.list_art()))
     
     elif args.sample:
         sample_art = """
