@@ -1,12 +1,22 @@
 # AsciiForge
 
-**AsciiForge** is an interactive Python application that lets you create, view, and manage ASCII art. Whether you want to convert images to ASCII art, browse a collection of predefined ASCII art pieces, or create your own masterpieces from scratch, AsciiForge provides an intuitive menu-driven interface to bring your text-based artwork to life.
+**AsciiForge** is an interactive Python application that lets you create, view, and manage ASCII art. Whether you want to convert images to ASCII art, browse a collection of predefined ASCII art pieces, or draw your own creations using a graphical canvas, AsciiForge provides both an intuitive menu-driven interface and a visual drawing tool to bring your text-based artwork to life.
 
 ## Installation
 
-```bash
-pip install -r requirements.txt
-```
+### Setting up Python Environment in VS Code
+
+1. **Create a Python virtual environment:**
+   - Press `Ctrl+Shift+P` in VS Code
+   - Type "Python: Create Environment" and select it
+   - Choose **Venv** as the environment type
+   - Select your Python interpreter
+   - Check the box to install dependencies from `requirements.txt`
+
+2. **Or install manually:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Usage
 
@@ -19,7 +29,19 @@ python main.py
 The program will present you with the following options:
 1. **Convert an image to ASCII art** - Transform your images into text-based art
 2. **View predefined ASCII art pieces** - Browse and display built-in ASCII art from the collection
-3. **Create your own ASCII art** - Design custom ASCII art from scratch
+3. **Create your own ASCII art** - Draw on a graphical canvas and convert to ASCII art
+4. **Exit** - Close the application
+
+### Creating ASCII Art with the Drawing Canvas
+
+When you select option 3, a graphical window will open with:
+- **Black canvas** for drawing
+- **White pen** for creating your artwork
+- **Mouse controls** - Click and drag to draw
+- **Pen size buttons** - Choose from 1, 3, 5, 8, or 12 pixel brush sizes
+- **Clear button** - Erase and start over
+- **Preview ASCII** - See your drawing converted to ASCII in real-time
+- **Convert & Save** - Export your creation as ASCII art to a text file
 
 ### Using in Visual Studio Code
 
@@ -80,11 +102,12 @@ python ascii_art_tester.py -t "Your ASCII art here"
 
 ## Features
 
-- Convert images to ASCII art
-- Display and test ASCII art strings
-- Adjustable output width
-- Save ASCII art to file
-- Built-in sample art for quick testing
+- **Image to ASCII Conversion** - Transform any image into ASCII art
+- **Predefined ASCII Art Library** - Browse and display built-in ASCII art pieces
+- **Graphical Drawing Canvas** - Draw freehand with your mouse and convert to ASCII
+- **Interactive Canvas Tools** - Multiple pen sizes and real-time preview
+- **Export Functionality** - Save your ASCII creations to text files
+- **Menu-Driven Interface** - Easy-to-use command-line menu system
 
 ## Future Roadmap
 
