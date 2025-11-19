@@ -4,7 +4,17 @@
 
 ## Installation
 
-### Setting up Python Environment in VS Code
+### Pre-built Installers (Recommended)
+
+Download and run the pre-built installer for your platform:
+
+- **Windows**: `AsciiForge.exe` - Double-click to run (no Python required)
+- **macOS**: `AsciiForge.app` - Drag to Applications folder
+- **Linux**: `AsciiForge` - Make executable and run
+
+### Building from Source
+
+#### Quick Start with Python
 
 1. **Create a Python virtual environment:**
    - Press `Ctrl+Shift+P` in VS Code
@@ -17,6 +27,32 @@
    ```bash
    pip install -r requirements.txt
    ```
+
+#### Building Installers
+
+To create standalone executables for distribution:
+
+**Windows:**
+```cmd
+build_windows.bat
+```
+Output: `dist\AsciiForge.exe`
+
+**macOS:**
+```bash
+chmod +x build_unix.sh
+./build_unix.sh
+```
+Output: `dist/AsciiForge.app`
+
+**Linux:**
+```bash
+chmod +x build_unix.sh
+./build_unix.sh
+```
+Output: `dist/AsciiForge`
+
+For detailed build instructions and troubleshooting, see [INSTALL.md](INSTALL.md).
 
 ## Usage
 
@@ -102,34 +138,28 @@ python ascii_art_tester.py -t "Your ASCII art here"
 
 ## Features
 
+- **Modern GUI Interface** - Beautiful dark-themed graphical user interface
 - **Image to ASCII Conversion** - Transform any image into ASCII art
 - **Predefined ASCII Art Library** - Browse and display built-in ASCII art pieces
 - **Graphical Drawing Canvas** - Draw freehand with your mouse and convert to ASCII
 - **Interactive Canvas Tools** - Multiple pen sizes and real-time preview
 - **Export Functionality** - Save your ASCII creations to text files
-- **Menu-Driven Interface** - Easy-to-use command-line menu system
+- **Cross-Platform** - Runs on Windows, macOS, and Linux
+- **Standalone Installers** - No Python installation required for end users
 
 ## Future Roadmap
 
-AsciiForge is actively being developed with exciting new features planned:
+AsciiForge is actively being developed as a native cross-platform desktop application with exciting new features planned:
 
-### FastAPI Web Service
-- RESTful API endpoints for image-to-ASCII conversion
-- Web-based interface for creating and viewing ASCII art
-- API documentation and interactive testing with Swagger UI
-- Cloud deployment for easy access from anywhere
-
-### Web Application
-- Modern responsive web interface
-- Real-time ASCII art preview and editing
-- Share and export ASCII art creations
-- Cloud storage for saved artworks
-- Cross-platform accessibility from any browser
-
-### Mobile Application
-- Native iOS and Android apps
-- Touch-optimized ASCII art editor
-- Camera integration for instant image-to-ASCII conversion
-- Offline mode for creating art on the go
-- Social sharing features
+### Enhanced Desktop Features
+- **Advanced Drawing Tools** - Shapes, fills, gradients, and brush patterns
+- **Layer Support** - Create complex ASCII art with multiple layers
+- **Undo/Redo System** - Full editing history and revision control
+- **ASCII Art Templates** - Pre-designed templates and frameworks
+- **Custom Color Schemes** - Personalize the interface with themes
+- **Batch Processing** - Convert multiple images at once
+- **Animation Support** - Create animated ASCII art sequences
+- **Export Formats** - SVG, PNG, HTML, and more output options
+- **Plugin System** - Extend functionality with custom plugins
+- **Cloud Sync** - Optional cloud backup and sync across devices
 
