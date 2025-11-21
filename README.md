@@ -1,6 +1,6 @@
 # AsciiForge
 
-**AsciiForge** is an interactive Python application that lets you create, view, and manage ASCII art. Whether you want to convert images to ASCII art, browse a collection of predefined ASCII art pieces, or draw your own creations using a graphical canvas, AsciiForge provides both an intuitive menu-driven interface and a visual drawing tool to bring your text-based artwork to life.
+**AsciiForge** is an interactive Ascii art application that lets you create, view, and manage ASCII art. Whether you want to convert images to ASCII art, browse a collection of predefined ASCII art pieces, or draw your own creations using a graphical canvas, AsciiForge provides both an intuitive menu-driven interface and a visual drawing tool to bring your text-based artwork to life.
 
 ## Installation
 
@@ -162,4 +162,5 @@ AsciiForge is actively being developed as a native cross-platform desktop applic
 - **Export Formats** - SVG, PNG, HTML, and more output options
 - **Plugin System** - Extend functionality with custom plugins
 - **Cloud Sync** - Optional cloud backup and sync across devices
+- **Ascii Art Manager** - Manage all your art and creations locally
 
