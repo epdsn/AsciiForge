@@ -1,3 +1,33 @@
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Test and coverage
+.pytest_cache/
+.coverage
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+
+# macOS
+.DS_Store
+
+# Common outputs
+ascii_image.txt
+output.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
