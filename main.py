@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox, scrolledtext
+from tkinter import messagebox, scrolledtext, filedialog
 import subprocess
 import sys
 import example
@@ -14,6 +14,8 @@ class AsciiForgeApp:
         self.root.title("AsciiForge - ASCII Art Creator")
         self.root.geometry("700x600")
         self.root.configure(bg='#1e1e1e')
+        # currently-selected image path (set via Select Image button)
+        self.selected_image_path = None
         
         # Create main container
         self.create_header()
@@ -69,6 +71,34 @@ class AsciiForgeApp:
             **button_config
         )
         btn1.pack(pady=8)
+
+        # Small Select Image button (opens file dialog) and label showing path
+        select_btn = tk.Button(
+            button_frame,
+            text="Select Image...",
+            bg='#0b5fa5',
+            fg='white',
+            command=self.select_image,
+            width=20,
+            height=1,
+            font=('Arial', 9, 'bold'),
+            relief=tk.RAISED,
+            bd=2
+        )
+        select_btn.pack(pady=(2, 8))
+
+        # Path display variable and label
+        self.selected_path_var = tk.StringVar(value="No image selected")
+        path_label = tk.Label(
+            button_frame,
+            textvariable=self.selected_path_var,
+            font=('Arial', 9),
+            bg='#1e1e1e',
+            fg='#cccccc',
+            wraplength=300,
+            justify='left'
+        )
+        path_label.pack(pady=(0, 8))
         
         # Button 2: View Predefined ASCII Art
         btn2 = tk.Button(
@@ -161,11 +191,39 @@ class AsciiForgeApp:
         self.write_output("\n=== Image to ASCII Converter ===\n")
         self.write_output("Launching image converter...\n")
         try:
-            subprocess.run([sys.executable, 'image-to-ascii.py'])
+            # If a path was selected, feed it to the converter via stdin so the
+            # existing `image-to-ascii.py` script receives the path when it
+            # prompts for input. Capture stdout/stderr and display in the UI.
+            if self.selected_image_path:
+                proc = subprocess.run(
+                    [sys.executable, 'image-to-ascii.py'],
+                    input=self.selected_image_path + '\n',
+                    text=True,
+                    capture_output=True
+                )
+            else:
+                proc = subprocess.run([sys.executable, 'image-to-ascii.py'], capture_output=True, text=True)
+
+            # Write process output to the output console
+            if proc.stdout:
+                self.write_output(proc.stdout + "\n")
+            if proc.stderr:
+                self.write_output("Errors:\n" + proc.stderr + "\n")
             self.write_output("Image conversion completed.\n")
         except Exception as e:
             self.write_output(f"Error: {str(e)}\n")
             messagebox.showerror("Error", f"Failed to launch image converter: {str(e)}")
+
+    def select_image(self):
+        """Open a file dialog to select an image and show its path in the UI"""
+        filetypes = [("Image files", "*.png;*.jpg;*.jpeg;*.bmp;*.gif"), ("All files", "*.*")]
+        path = filedialog.askopenfilename(title="Select image to convert", filetypes=filetypes)
+        if path:
+            self.selected_image_path = path
+            # Update the small label in the button panel
+            display_path = path if len(path) < 80 else '...' + path[-77:]
+            self.selected_path_var.set(display_path)
+            self.write_output(f"Selected image: {path}\n")
     
     def view_predefined_art(self):
         """View predefined ASCII art pieces"""

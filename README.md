@@ -147,6 +147,41 @@ python ascii_art_tester.py -t "Your ASCII art here"
 - **Cross-Platform** - Runs on Windows, macOS, and Linux
 - **Standalone Installers** - No Python installation required for end users
 
+## System dependencies
+
+The GUI parts of this project (for example the drawing canvas) use Tkinter. Tkinter is not a Python package you install with pip and therefore is not listed in `requirements.txt`.
+
+Instead, Tkinter is provided by your system's Python/Tk installation. Install the appropriate system package for your OS before running any GUI features:
+
+- Debian / Ubuntu / Pop!_OS:
+```bash
+sudo apt update
+sudo apt install python3-tk
+```
+- Fedora / RHEL:
+```bash
+sudo dnf install python3-tkinter
+```
+- Arch Linux / Manjaro:
+```bash
+sudo pacman -S tk
+```
+- macOS:
+   - If you use the Python from python.org the installer usually includes Tk. If you use Homebrew, install tcl-tk and make sure your Python is built against it:
+```bash
+brew install tcl-tk
+# you may need to reinstall Python and/or set environment variables so the interpreter finds Homebrew's Tk
+```
+- Windows:
+   - The official Python installers for Windows include Tkinter by default. If using an alternative distribution, install or enable the corresponding Tk runtime.
+
+To verify Tkinter is available from the environment you plan to run the program in, run:
+```bash
+python3 -c "import tkinter; print('tkinter OK', getattr(tkinter, 'TkVersion', 'unknown'))"
+```
+
+Do not add `tkinter` to `requirements.txt` — pip cannot install it and listing it there will be confusing. Keep `requirements.txt` for pip-installable Python packages (for this project, e.g. Pillow).
+
 ## Future Roadmap
 
 AsciiForge is actively being developed as a native cross-platform desktop application with exciting new features planned:

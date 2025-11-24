@@ -8,6 +8,15 @@ from PIL import Image
 import argparse
 import example
 
+# Try to import tkinter for a file-selection dialog. Tkinter is a system package
+# (not installable via pip). We handle its absence gracefully.
+try:
+    import tkinter as tk
+    from tkinter import filedialog
+    HAS_TK = True
+except Exception:
+    HAS_TK = False
+
 
 ASCII_CHARS = ['@', '#', 'S', '%', '?', '*', '+', ';', ':', ',', '.']
 
@@ -73,6 +82,7 @@ def main():
     parser.add_argument('-c', '--canvas', help='Display ASCII art from canvas by name')
     parser.add_argument('-l', '--list', action='store_true', help='List all available canvas art')
     parser.add_argument('-a', '--all', action='store_true', help='Display all canvas art')
+    parser.add_argument('-g', '--gui', action='store_true', help='Open a file dialog to choose an image to convert')
     
     args = parser.parse_args()
     
@@ -124,6 +134,29 @@ def main():
                 with open(filename, 'w') as f:
                     f.write(ascii_art)
                 print(f"Saved to {filename}")
+
+    elif args.gui:
+        if not HAS_TK:
+            print("Tkinter is not available in this Python environment.\n"
+                  "On Debian/Ubuntu/Mint install the package 'python3-tk' and run again.")
+        else:
+            # Use a hidden root window to show the file dialog
+            root = tk.Tk()
+            root.withdraw()
+            filetypes = [("Image files", "*.png;*.jpg;*.jpeg;*.bmp;*.gif"), ("All files", "*.*")]
+            image_path = filedialog.askopenfilename(title="Select image to convert", filetypes=filetypes)
+            root.destroy()
+            if image_path:
+                print(f"Converting image: {image_path}")
+                ascii_art = image_to_ascii(image_path, args.width)
+                if ascii_art:
+                    display_ascii_art(ascii_art)
+                    save = input("Save to file? (y/n): ")
+                    if save.lower() == 'y':
+                        filename = input("Enter filename (default: output.txt): ") or "output.txt"
+                        with open(filename, 'w') as f:
+                            f.write(ascii_art)
+                        print(f"Saved to {filename}")
     
     elif args.text:
         display_ascii_art(args.text)
